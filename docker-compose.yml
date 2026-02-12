@@ -1,0 +1,10 @@
+services:
+  cowrie:
+    image: cowrie/cowrie:latest
+    container_name: honeypot-cowrie
+    ports:
+      - "2222:2222"
+      - "2223:2223"
+    volumes:
+      - ./logs/cowrie:/cowrie/cowrie-git/var/log/cowrie
+    restart: unless-stopped

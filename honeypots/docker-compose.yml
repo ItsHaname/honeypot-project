@@ -1,0 +1,51 @@
+services:
+  cowrie:
+    image: cowrie/cowrie:latest
+    container_name: cowrie
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./logs/cowrie:/var/log/cowrie
+      - ./honeypots/cowrie:/etc/cowrie
+
+  dionaea:
+    image: stingar/dionaea:latest
+    container_name: dionaea
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./logs/dionaea:/var/log/dionaea
+      - ./honeypots/dionaea:/etc/dionaea
+
+  honeypy:
+    image: pyhoneypot/honeypy:latest
+    container_name: honeypy
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./logs/honeypy:/var/log/honeypy
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres_honeypot
+    restart: unless-stopped
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=honeypot
+      - POSTGRES_USER=hanane
+      - POSTGRES_PASSWORD=changeme
+    ports:
+      - "5432:5432"
+
+  api:
+    build: ./api
+    container_name: honeypot_api
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logs:/logs
+      - ./models:/app/models
+    depends_on:
+      - postgres
