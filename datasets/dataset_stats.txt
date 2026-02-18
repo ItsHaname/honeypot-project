@@ -2,14 +2,14 @@
 RÉSUMÉ DU DATASET HONEYPOT
 ========================================
 
-📊 VOLUME GLOBAL
+ VOLUME GLOBAL
  total_events 
 --------------
        107723
 (1 row)
 
 
-🌍 DISTRIBUTION PAR PAYS
+ DISTRIBUTION PAR PAYS
  country | attacks | percentage 
 ---------+---------+------------
  CN      |   30199 |      28.03
@@ -21,7 +21,7 @@ RÉSUMÉ DU DATASET HONEYPOT
 (6 rows)
 
 
-🔑 TOP 10 MOTS DE PASSE
+ TOP 10 MOTS DE PASSE
  password | attempts 
 ----------+----------
  12345    |    10920
@@ -37,7 +37,7 @@ RÉSUMÉ DU DATASET HONEYPOT
 (10 rows)
 
 
-👤 TOP 5 USERNAMES
+ TOP 5 USERNAMES
  username | attempts 
 ----------+----------
  root     |    27992
@@ -48,7 +48,7 @@ RÉSUMÉ DU DATASET HONEYPOT
 (5 rows)
 
 
-⏰ ACTIVITÉ PAR HEURE
+ ACTIVITÉ PAR HEURE
  hour | attacks 
 ------+---------
     0 |    4270
@@ -78,7 +78,7 @@ RÉSUMÉ DU DATASET HONEYPOT
 (24 rows)
 
 
-📅 ACTIVITÉ PAR JOUR
+ ACTIVITÉ PAR JOUR
  day_of_week | attacks 
 -------------+---------
            0 |   14475
