@@ -1,4 +1,19 @@
 services:
+  postgresql:
+    image: postgres:17
+    container_name: honeypot-postgresql
+    environment:
+      POSTGRES_USER: honeyadmin
+      POSTGRES_PASSWORD: HoneySecure2026!
+      POSTGRES_DB: honeypot
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - honeypot-network
+
   cowrie:
     image: cowrie/cowrie:latest
     container_name: honeypot-cowrie
@@ -7,4 +22,12 @@ services:
       - "2223:2223"
     volumes:
       - ./logs/cowrie:/cowrie/cowrie-git/var/log/cowrie
+    depends_on:
+      - postgresql
     restart: unless-stopped
+    networks:
+      - honeypot-network
+
+networks:
+  honeypot-network:
+    driver: bridge
